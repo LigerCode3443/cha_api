@@ -2,10 +2,12 @@ import bcrypt from "bcrypt";
 
 import HttpError from "../helpers/HttpError.js";
 import User from "../models/User.js";
-import { token } from "morgan";
+
 import { createToken } from "../helpers/jwt.js";
 
-const findUser = (filter) => User.findOne(filter);
+export const findUser = (filter) => User.findOne(filter);
+
+export const updateUser = (filter, data) => User.findOneAndUpdate(filter, data);
 
 export const signup = async (data) => {
   const { email, password } = data;
@@ -31,6 +33,7 @@ export const signin = async (data) => {
     throw HttpError(401, "Password invalid");
   }
   const token = createToken({ id: user._id });
+  await updateUser({ _id: user._id }, { token });
 
   return { token };
 };

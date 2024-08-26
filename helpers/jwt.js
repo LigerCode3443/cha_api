@@ -7,7 +7,7 @@ export const createToken = (payload) =>
 
 export const verifyToken = (token) => {
   try {
-    const payload = jwt.verify(token, JWT_SECRET);
+    const payload = jwt.verify(token, "sgmZb77o6ZKBlEzqpz7k2WezUzxPpqiT");
     return { data: payload };
   } catch (error) {
     return { error };
