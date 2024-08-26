@@ -23,7 +23,7 @@ export const signup = async (data) => {
 
 export const signin = async (data) => {
   const { email, password } = data;
-  const user = await findUser({ email });
+  const user = await findUser({ email }, "-password");
 
   if (!user) {
     throw HttpError(401, "Email not found");
@@ -35,5 +35,8 @@ export const signin = async (data) => {
   const token = createToken({ id: user._id });
   await updateUser({ _id: user._id }, { token });
 
-  return { token };
+  return {
+    user,
+    token,
+  };
 };
