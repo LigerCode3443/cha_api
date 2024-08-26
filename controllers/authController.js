@@ -16,12 +16,9 @@ const signin = async (req, res) => {
 };
 
 const getCurrent = (req, res) => {
-  const { username, email } = req.user;
+  const user = req.user;
 
-  res.json({
-    username,
-    email,
-  });
+  res.json(user);
 };
 
 const signout = async (req, res) => {
