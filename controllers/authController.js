@@ -33,7 +33,7 @@ const signout = async (req, res) => {
 
 const userById = async (req, res) => {
   const { userId } = req.params;
-
+  console.log(userId);
   const user = await authServices.findUserById(userId);
 
   res.json(user);
