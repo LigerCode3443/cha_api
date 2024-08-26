@@ -31,9 +31,18 @@ const signout = async (req, res) => {
   });
 };
 
+const userById = async (req, res) => {
+  const { _id } = req.body;
+  console.log(_id);
+  const user = await authServices.findUser({ _id });
+
+  res.json(user);
+};
+
 export default {
   signup: ctrlWrapper(signup),
   signin: ctrlWrapper(signin),
   getCurrent: ctrlWrapper(getCurrent),
   signout: ctrlWrapper(signout),
+  userById: ctrlWrapper(userById),
 };
