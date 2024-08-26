@@ -32,9 +32,9 @@ const signout = async (req, res) => {
 };
 
 const userById = async (req, res) => {
-  const { _id } = req.body;
+  const { userId } = req.params;
 
-  const user = await authServices.findUserById(_id);
+  const user = await authServices.findUserById(userId);
 
   res.json(user);
 };
