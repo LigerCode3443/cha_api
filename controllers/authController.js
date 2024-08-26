@@ -33,8 +33,8 @@ const signout = async (req, res) => {
 
 const userById = async (req, res) => {
   const { _id } = req.body;
-  console.log(_id);
-  const user = await authServices.findUser({ _id });
+
+  const user = await authServices.findUserById(_id);
 
   res.json(user);
 };
