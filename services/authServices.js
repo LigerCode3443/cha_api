@@ -7,6 +7,8 @@ import { createToken } from "../helpers/jwt.js";
 
 export const findUser = (filter) => User.findOne(filter);
 
+export const findUsers = () => User.find();
+
 export const findUserById = (_id) => User.findById(_id);
 
 export const updateUser = (filter, data) => User.findOneAndUpdate(filter, data);

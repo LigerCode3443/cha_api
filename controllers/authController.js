@@ -33,10 +33,16 @@ const signout = async (req, res) => {
 
 const userById = async (req, res) => {
   const { userId } = req.params;
-  console.log(userId);
+
   const user = await authServices.findUserById(userId);
 
   res.json(user);
+};
+
+const allUser = async (_, res) => {
+  const users = await authServices.findUsers();
+
+  res.json(users);
 };
 
 export default {
@@ -45,4 +51,5 @@ export default {
   getCurrent: ctrlWrapper(getCurrent),
   signout: ctrlWrapper(signout),
   userById: ctrlWrapper(userById),
+  allUser: ctrlWrapper(allUser),
 };

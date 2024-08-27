@@ -22,4 +22,6 @@ authRouter.post("/signout", authenticate, authController.signout);
 
 authRouter.get("/:userId", authController.userById);
 
+authRouter.get("/users/all", authController.allUser);
+
 export default authRouter;

@@ -3,7 +3,6 @@ import * as conversationServices from "../services/conversationServices.js";
 import ctrlWrapper from "../decorators/ctrlWrapper.js";
 
 const addConversation = async (req, res) => {
-  console.log(req.body);
   const savedConversation = await conversationServices.addConversation({
     members: [req.body.senderId, req.body.receiverId],
   });
